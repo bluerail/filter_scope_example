@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   def index
     @books = Book.order(:title)
 
-    @books = @books.filter(params[:query]) if params[:query]
+    @books = @books.filter(params[:query], :title, :author, :publisher) if params[:query]
 
     respond_to do |format|
       format.html # index.html.erb
